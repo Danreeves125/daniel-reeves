@@ -1,0 +1,31 @@
+.page__title {
+    color: red;
+    font-size: 3.5rem;
+    line-height: 4rem;
+    margin: 0;
+}
+
+.nav__links {
+    list-style: none;
+    margin: 0 0 1rem 0;
+    padding: 0;
+    display: flex;
+    grid-gap: 15px;
+}
+
+.nav__link {
+    font-size: 1.6rem;
+    line-height: 2rem;
+}
+
+.nav__link-tag {
+    text-decoration: none;
+    color: #000;
+}
+
+.site-title {
+    font-size: 3rem;
+    color: gray;
+    font-weight: 700;
+    margin: 3rem 0;
+}

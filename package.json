@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "babel-plugin-styled-components": "^1.13.2",
+    "blobshape": "^1.0.0",
     "gatsby": "^3.13.0",
     "gatsby-plugin-gatsby-cloud": "^3.1.0",
     "gatsby-plugin-google-analytics": "^3.13.0",
@@ -29,6 +30,7 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
+    "react-wavify": "^1.5.4",
     "styled-components": "^5.3.1"
   }
 }
