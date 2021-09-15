@@ -52,6 +52,11 @@ const GlobalStyles = createGlobalStyle`
     }
 `
 
+const Container = styled.div `
+    max-width: 1290px;
+    margin: 0 auto;
+`
+
 const getRandomColor = () => {
     let colourArray = ['#0067D2', '#665CD0', '#AE48BC', '#DC309B', '#F62971'];
     
@@ -60,17 +65,11 @@ const getRandomColor = () => {
     return colourArray[randomColor];
 }
 
-export let colour = getRandomColor();
-
-const Container = styled.div `
-    max-width: 1290px;
-    margin: 0 auto;
-`
 
 const Layout = ({pageTitle, infoText, children}) => {
-
     
     return (
+        
         <div>
             <GlobalStyles />
             <Header/>

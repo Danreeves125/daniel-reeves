@@ -24,12 +24,20 @@ module.exports = {
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
     {
-      resolve: "gatsby-source-filesystem",
+      resolve: 'gatsby-plugin-react-svg',
       options: {
-        name: "images",
-        path: "./src/images/",
-      },
-      __key: "images",
-    },
+        rule: {
+          include: /images/
+        }
+      }
+    }
+    // {
+    //   resolve: "gatsby-source-filesystem",
+    //   options: {
+    //     name: "images",
+    //     path: "./src/images/",
+    //   },
+    //   __key: "images",
+    // },
   ],
 };
