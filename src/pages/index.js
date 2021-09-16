@@ -230,7 +230,6 @@ const Scroll = styled.div `
     }
 `
 
-
 const IndexPage = () => {
     
     const Homepage = useStaticQuery(graphql`

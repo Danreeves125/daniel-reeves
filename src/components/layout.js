@@ -4,13 +4,15 @@ import Footer from "./footer"
 import {page__title} from './layout.module.css'
 import styled, {createGlobalStyle} from "styled-components"
 
-export const getRandomColor = () => {
+export let getRandomColor = () => {
     let colourArray = ['#0067D2', '#665CD0', '#AE48BC', '#DC309B', '#F62971'];
     
     let randomColor = Math.floor(Math.random() * colourArray.length);
     
     return colourArray[randomColor];
 }
+
+// export let colour = getRandomColor();
 
 const GlobalStyles = createGlobalStyle`
     :root {
@@ -66,7 +68,7 @@ const Container = styled.div `
 `
 
 
-const Layout = ({pageTitle, infoText, children}) => {
+const Layout = ({pageHeading, infoText, children}) => {
     
     return (
         
@@ -74,7 +76,7 @@ const Layout = ({pageTitle, infoText, children}) => {
             <GlobalStyles />
             <Header/>
             <Container>
-                <h1 className={page__title}>{pageTitle}</h1>
+                <h1 className={page__title}>{pageHeading}</h1>
                 <h2>{infoText}</h2>
                 {children}
             </Container>

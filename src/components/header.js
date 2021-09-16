@@ -7,9 +7,7 @@ import getRandomColour from './layout';
 import LogoBg from "../images/logo-blob.svg"
 import LogoName from "../images/logo.svg";
 
-const { path} = blobshape({size: 500, growth: 3, edges: 10, seed: null});
-
-// let colour = getRandomColour;
+const {path} = blobshape({size: 500, growth: 3, edges: 10, seed: null});
 
 const SiteHeader = styled.header `
     width: 100%;
@@ -162,11 +160,11 @@ const Header = () => {
     
     let colour = getRandomColour;
     
+    
     return (
         <SiteHeader>
             <Logo>
                 <LogoBg className="logo-bg"
-                        preserveAspectRatio="preserveAspectRatio"
                         opacity="0"
                 />
                 <Link to="/" title="Daniel Reeves">
@@ -177,11 +175,6 @@ const Header = () => {
                 {items.map(item => (
                     <Link key={item.id} to={item.url.replace('http://', '/')} title={item.label}>
                         {item.label}
-                        {
-                            <svg style={{opacity: 0}} xmlns="http://www.w3.org/2000/svg" viewBox={ `0 0 500 500`}  preserveAspectRatio="xMinYMin meet">
-                                <path d={path} fill={colour}></path>
-                            </svg>
-                        }
                     </Link>
                 ))}
             </Navigation>
