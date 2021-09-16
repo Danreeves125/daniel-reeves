@@ -5,7 +5,6 @@ import styled from "styled-components";
 import Wave from 'react-wavify';
 import Dan from '../images/dan-01.svg';
 
-
 const HeroWrapper = styled.div `
     max-width: 131rem;
     margin: -8.5rem auto 0 auto;

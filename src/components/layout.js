@@ -4,6 +4,14 @@ import Footer from "./footer"
 import {page__title} from './layout.module.css'
 import styled, {createGlobalStyle} from "styled-components"
 
+export const getRandomColor = () => {
+    let colourArray = ['#0067D2', '#665CD0', '#AE48BC', '#DC309B', '#F62971'];
+    
+    let randomColor = Math.floor(Math.random() * colourArray.length);
+    
+    return colourArray[randomColor];
+}
+
 const GlobalStyles = createGlobalStyle`
     :root {
       --body-font: 'Roboto';
@@ -56,14 +64,6 @@ const Container = styled.div `
     max-width: 1290px;
     margin: 0 auto;
 `
-
-const getRandomColor = () => {
-    let colourArray = ['#0067D2', '#665CD0', '#AE48BC', '#DC309B', '#F62971'];
-    
-    let randomColor = Math.floor(Math.random() * colourArray.length);
-    
-    return colourArray[randomColor];
-}
 
 
 const Layout = ({pageTitle, infoText, children}) => {

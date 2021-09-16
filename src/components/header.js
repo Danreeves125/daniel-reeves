@@ -1,13 +1,15 @@
 import * as React from 'react'
+import {useEffect} from "react";
 import {Link, useStaticQuery, graphql} from 'gatsby'
 import styled from 'styled-components'
 import blobshape from "blobshape"
-import {getRandomColor} from "./layout";
+import getRandomColour from './layout';
 import LogoBg from "../images/logo-blob.svg"
 import LogoName from "../images/logo.svg";
 
-
 const { path} = blobshape({size: 500, growth: 3, edges: 10, seed: null});
+
+// let colour = getRandomColour;
 
 const SiteHeader = styled.header `
     width: 100%;
@@ -38,6 +40,9 @@ const Logo = styled.div `
     height: auto;
     margin-top: -0.2rem;
     transition:  0.5s ease;
+    
+    path {
+    }
   }
   
   .name {
@@ -65,12 +70,6 @@ const Logo = styled.div `
     @media(max-width: 375px) {
       width: 12rem;
     }
-
-    path {
-      fill: ${getRandomColor !== '#EDEDED' ? '#fff' : '#333'}
-    }
-    
-    
   }
 `;
 
@@ -130,7 +129,17 @@ const Navigation = styled.nav `
     }
 `;
 
+
 const Header = () => {
+    useEffect(() => {
+        
+        var svg = document.getElementsByTagName("svg")[0];
+        var bbox = svg.getBBox();
+        svg.setAttribute("width", bbox.width + "px");
+        svg.setAttribute("height", bbox.height + "px");
+        svg.setAttribute("viewBox", `${bbox.x} ${bbox.y} ${bbox.width} ${bbox.height}`);
+        svg.style.opacity = 1;
+    });
     
     const data = useStaticQuery(graphql`
         query MainNavigation {
@@ -151,11 +160,15 @@ const Header = () => {
 
     const items = data.wpMenu.menuItems.nodes;
     
+    let colour = getRandomColour;
     
     return (
         <SiteHeader>
             <Logo>
-                <LogoBg className="logo-bg"/>
+                <LogoBg className="logo-bg"
+                        preserveAspectRatio="preserveAspectRatio"
+                        opacity="0"
+                />
                 <Link to="/" title="Daniel Reeves">
                     <LogoName className="name"/>
                 </Link>
@@ -166,7 +179,7 @@ const Header = () => {
                         {item.label}
                         {
                             <svg style={{opacity: 0}} xmlns="http://www.w3.org/2000/svg" viewBox={ `0 0 500 500`}  preserveAspectRatio="xMinYMin meet">
-                                <path d={path} fill={getRandomColor}></path>
+                                <path d={path} fill={colour}></path>
                             </svg>
                         }
                     </Link>
@@ -175,14 +188,5 @@ const Header = () => {
         </SiteHeader>
     )
 }
-
-// setTimeout(() => {
-//     var svg = document.getElementsByTagName("svg")[0];
-//     var bbox = svg.getBBox();
-//     svg.setAttribute("width", bbox.width + "px");
-//     svg.setAttribute("height", bbox.height + "px");
-//     svg.setAttribute("viewBox", `${bbox.x} ${bbox.y} ${bbox.width} ${bbox.height}`);
-//     svg.style.opacity = 1;
-// }, 1000)
 
 export default Header
