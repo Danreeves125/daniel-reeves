@@ -246,6 +246,15 @@ const IndexPage = () => {
                 }
             }
         }
+
+        query AboutMe {
+            wpPage(slug: {eq: "about-me"}) {
+                id
+                content
+                slug
+                title
+            }
+        }
     `)
     
     return(
@@ -289,6 +298,8 @@ const IndexPage = () => {
                       }}
                 />
             </HeroWrapper>
+            
+            
         </Layout>
     )
 }
