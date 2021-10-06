@@ -60,6 +60,30 @@ const GlobalStyles = createGlobalStyle`
       border-radius: 2.5rem;
       background: linear-gradient(120deg, var(--blue), var(--purple-alt));
     }
+    
+    h1, .h1
+    h2, .h2,
+    h3, .h3,
+    h4, .h4,
+    h5, .h5,
+    h6, .h6 {
+        font-family: var(--primary-font);
+        font-weight: bold;
+    }
+
+    .uppercase {
+      text-transform: uppercase;
+    }
+    
+    h1, .h1 {
+      margin-bottom: 3rem;
+      font-size: 4.5rem;
+    }
+    
+    h2, .h2 {
+      margin-bottom: 2.7rem;
+      font-size: 4rem;
+    }
 `
 
 const Container = styled.div `

@@ -4,9 +4,11 @@ import {Link, graphql, useStaticQuery} from "gatsby";
 import styled from "styled-components";
 import Wave from 'react-wavify';
 import Dan from '../images/dan-01.svg';
+import AboutSection from "../components/homepage/aboutSection";
 
 const HeroWrapper = styled.div `
     max-width: 131rem;
+    width: 100%;
     margin: -8.5rem auto 0 auto;
     display: flex;
     align-items: center;
@@ -232,9 +234,9 @@ const Scroll = styled.div `
 
 const IndexPage = () => {
     
-    const Homepage = useStaticQuery(graphql`
+    const Page = useStaticQuery(graphql`
         query Homepage {
-            wpPage(slug: {eq: "homepage"}) {
+            home: wpPage(slug: {eq: "homepage"}) {
                 id
                 link
                 title
@@ -244,15 +246,7 @@ const IndexPage = () => {
                     heroSubtitle
                     heroText
                 }
-            }
-        }
 
-        query AboutMe {
-            wpPage(slug: {eq: "about-me"}) {
-                id
-                content
-                slug
-                title
             }
         }
     `)
@@ -261,10 +255,10 @@ const IndexPage = () => {
         <Layout>
             <HeroWrapper>
                 <HeroContent>
-                    <h1>{Homepage.wpPage.homepage.heroTitle}</h1>
-                    <h2>{Homepage.wpPage.homepage.heroSubtitle}</h2>
+                    <h1>{Page.home.homepage.heroTitle}</h1>
+                    <h2>{Page.home.homepage.heroSubtitle}</h2>
                     <p>
-                        {Homepage.wpPage.homepage.heroText}
+                        {Page.home.homepage.heroText}
                     </p>
                     <Link to="/contact" title="Get In Touch" className="button">Get In Touch</Link>
                 </HeroContent>
@@ -298,8 +292,7 @@ const IndexPage = () => {
                       }}
                 />
             </HeroWrapper>
-            
-            
+            <AboutSection />
         </Layout>
     )
 }
