@@ -18,6 +18,7 @@ const {path} = blobshape({
 
 const ProjectWrapper = styled.section `
     background-color: var(--light-grey);
+    position: relative;
   
   .blocks {
     display: grid;
@@ -114,26 +115,26 @@ const PortfolioSection = ({colour}) => {
                         ))}
                     </Swiper>
             </div>
-            <Wave fill='#ededed'
-                  paused={false}
-                  className="wave"
-                  options={{
-                      height: 120,
-                      amplitude: 20,
-                      speed: 0.15,
-                      points: 4
-                  }}
-            />
-            <Wave fill='#444'
-                  paused={false}
-                  className="wave-two"
-                  options={{
-                      height: 105,
-                      amplitude: 28,
-                      speed: 0.15,
-                      points: 3
-                  }}
-            />
+            {/*<Wave fill='#ededed'*/}
+            {/*      paused={false}*/}
+            {/*      className="wave"*/}
+            {/*      options={{*/}
+            {/*          height: 120,*/}
+            {/*          amplitude: 20,*/}
+            {/*          speed: 0.15,*/}
+            {/*          points: 4*/}
+            {/*      }}*/}
+            {/*/>*/}
+            {/*<Wave fill='#444'*/}
+            {/*      paused={false}*/}
+            {/*      className="wave-two"*/}
+            {/*      options={{*/}
+            {/*          height: 105,*/}
+            {/*          amplitude: 28,*/}
+            {/*          speed: 0.15,*/}
+            {/*          points: 3*/}
+            {/*      }}*/}
+            {/*/>*/}
         </ProjectWrapper>
     )
 }
