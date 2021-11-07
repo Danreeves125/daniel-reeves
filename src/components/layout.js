@@ -46,6 +46,12 @@ const GlobalStyles = createGlobalStyle`
     body {
         margin: 0;
     }
+    
+    .container {
+      max-width: 131rem;
+      margin: 0 auto;
+      width: 100%;
+    }
 
     .button {
       display: inline-flex;
@@ -58,10 +64,36 @@ const GlobalStyles = createGlobalStyle`
       text-decoration: none;
       padding: 1.2rem 3.4rem;
       border-radius: 2.5rem;
+      transition: ease 0.5s;
+      background-color: #fff;
+    }
+    
+    .button--gradient {
       background: linear-gradient(120deg, var(--blue), var(--purple-alt));
     }
     
-    h1, .h1
+    .button--purple-alt {
+      border: 0.1rem solid var(--purple);
+      color: var(--purple);
+      
+      &:hover {
+          color: #fff;
+          background-color: var(--purple);
+      }
+    }
+
+    .button--blue {
+      border: 0.1rem solid var(--blue);
+      color: #fff;
+      background-color: var(--blue);
+
+      &:hover {
+        color: var(--blue);
+        background-color: #fff;
+      }
+    }
+    
+    h1, .h1,
     h2, .h2,
     h3, .h3,
     h4, .h4,
@@ -69,10 +101,15 @@ const GlobalStyles = createGlobalStyle`
     h6, .h6 {
         font-family: var(--primary-font);
         font-weight: bold;
+        margin-top: 0;
     }
 
     .uppercase {
       text-transform: uppercase;
+    }
+    
+    .no-m {
+      margin: 0;
     }
     
     h1, .h1 {
@@ -83,6 +120,47 @@ const GlobalStyles = createGlobalStyle`
     h2, .h2 {
       margin-bottom: 2.7rem;
       font-size: 4rem;
+    }
+    
+     h3, .h3 {
+      margin-bottom: 2.4rem;
+      font-size: 3rem;
+    }
+    
+    h4, .h4 {
+      margin-bottom: 2.2rem;
+      font-size: 2.8rem;
+    }
+    
+    h5, .h5 {
+      margin-bottom: 20rem;
+      font-size: 2.6rem;
+    }
+    
+    h5, .h5 {
+      margin-bottom: 20rem;
+      font-size: 2.6rem;
+    }
+
+    .wave,
+    .wave-two {
+      position: absolute;
+      bottom: -0.5rem;
+      left: 0;
+      z-index: 3;
+      pointer-events: none;
+    }
+    .wave-two {
+      opacity: 0.2;
+      z-index: 2;
+    }
+    
+    .slider {
+      padding: 0 1.5rem;
+      
+      &__recent {
+      
+      }
     }
 `
 

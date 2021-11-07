@@ -5,6 +5,7 @@ import styled from "styled-components";
 import Wave from 'react-wavify';
 import Dan from '../images/dan-01.svg';
 import AboutSection from "../components/homepage/aboutSection";
+import PortfolioSection from "../components/homepage/portfolioSection";
 
 const HeroWrapper = styled.div `
     max-width: 131rem;
@@ -18,19 +19,6 @@ const HeroWrapper = styled.div `
     transition: ease 0.5s;
     position: relative;
     overflow: hidden;
-  
-  .wave,
-  .wave-two {
-    position: absolute;
-     bottom: -0.5rem;
-    left: 0;
-    z-index: 3;
-    pointer-events: none;
-  }
-  .wave-two {
-    opacity: 0.2;
-    z-index: 2;
-  }
 
     @media(max-width: 1230px) {
         margin-top: -7rem;
@@ -174,64 +162,6 @@ const Me = styled.div `
   }
 `
 
-const Scroll = styled.div `
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    z-index: 3;
-
-    @media(max-width: 925px) {
-        position: relative;
-        left: 0;
-        transform: none;
-        
-    }
-
-    @keyframes heroScroll {
-        50% {
-          transform: translate3d(0, 1.1rem, 0);
-        }
-        
-        100% {
-          transform: translate3d(0, 0.4rem, 0);
-        }
-    }
-  
-    .scroll {
-        width: 1.1rem;
-        height: 2rem;
-        border-radius: 2rem;
-        border: 0.1rem solid var(--pink);
-        margin-bottom: 0.2rem;
-        position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-      
-        &:before {
-            content: '';
-            width: 0.1rem;
-            height: 0.4rem;
-            background-color: var(--pink);
-            transform: translate3d(0, 0.4rem, 0);
-            transition: ease, 0.5s;
-            animation-name: heroScroll;
-            animation-duration: 3s;
-            animation-iteration-count: infinite;
-        }
-    }
-    
-    span {
-        font-family: var(--primary-font);
-        text-transform: uppercase;
-        font-size: 1.5rem;
-    }
-`
-
 const IndexPage = () => {
     
     const Page = useStaticQuery(graphql`
@@ -260,17 +190,17 @@ const IndexPage = () => {
                     <p>
                         {Page.home.homepage.heroText}
                     </p>
-                    <Link to="/contact" title="Get In Touch" className="button">Get In Touch</Link>
+                    <Link to="/contact" title="Get In Touch" className="button button--gradient">Get In Touch</Link>
                 </HeroContent>
                 <Me>
                     <Dan />
                 </Me>
-                <Scroll>
-                    <div className="scroll">
-                    
-                    </div>
-                    <span>Scroll</span>
-                </Scroll>
+                {/*<Scroll>*/}
+                {/*    <div className="scroll">*/}
+                {/*    */}
+                {/*    </div>*/}
+                {/*    <span>Scroll</span>*/}
+                {/*</Scroll>*/}
                 <Wave fill='#fff'
                       paused={false}
                       className="wave"
@@ -293,6 +223,7 @@ const IndexPage = () => {
                 />
             </HeroWrapper>
             <AboutSection />
+            <PortfolioSection />
         </Layout>
     )
 }
