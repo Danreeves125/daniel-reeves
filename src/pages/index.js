@@ -7,6 +7,10 @@ import Dan from '../images/dan-01.svg';
 import AboutSection from "../components/homepage/aboutSection";
 import PortfolioSection from "../components/homepage/portfolioSection";
 
+const Hero = styled.div `
+    width: 100%;
+    position: relative;
+  `
 const HeroWrapper = styled.div `
     max-width: 131rem;
     width: 100%;
@@ -183,24 +187,20 @@ const IndexPage = () => {
     
     return(
         <Layout>
-            <HeroWrapper>
-                <HeroContent>
-                    <h1>{Page.home.homepage.heroTitle}</h1>
-                    <h2>{Page.home.homepage.heroSubtitle}</h2>
-                    <p>
-                        {Page.home.homepage.heroText}
-                    </p>
-                    <Link to="/contact" title="Get In Touch" className="button button--gradient">Get In Touch</Link>
-                </HeroContent>
-                <Me>
-                    <Dan />
-                </Me>
-                {/*<Scroll>*/}
-                {/*    <div className="scroll">*/}
-                {/*    */}
-                {/*    </div>*/}
-                {/*    <span>Scroll</span>*/}
-                {/*</Scroll>*/}
+            <Hero>
+                <HeroWrapper>
+                    <HeroContent>
+                        <h1>{Page.home.homepage.heroTitle}</h1>
+                        <h2>{Page.home.homepage.heroSubtitle}</h2>
+                        <p>
+                            {Page.home.homepage.heroText}
+                        </p>
+                        <Link to="/contact" title="Get In Touch" className="button button--gradient">Get In Touch</Link>
+                    </HeroContent>
+                    <Me>
+                        <Dan />
+                    </Me>
+                </HeroWrapper>
                 <Wave fill='#fff'
                       paused={false}
                       className="wave"
@@ -221,7 +221,7 @@ const IndexPage = () => {
                           points: 3
                       }}
                 />
-            </HeroWrapper>
+            </Hero>
             <AboutSection />
             <PortfolioSection />
         </Layout>

@@ -155,20 +155,10 @@ const GlobalStyles = createGlobalStyle`
       z-index: 2;
     }
     
-    .slider {
+    .swiper {
       padding: 0 1.5rem;
-      
-      &__recent {
-      
-      }
     }
 `
-
-const Container = styled.div `
-    max-width: 1290px;
-    margin: 0 auto;
-`
-
 
 const Layout = ({pageHeading, infoText, children}) => {
     
@@ -177,11 +167,9 @@ const Layout = ({pageHeading, infoText, children}) => {
         <div>
             <GlobalStyles />
             <Header/>
-            <Container>
-                <h1 className={page__title}>{pageHeading}</h1>
-                <h2>{infoText}</h2>
-                {children}
-            </Container>
+            <h1 className={page__title}>{pageHeading}</h1>
+            <h2>{infoText}</h2>
+            {children}
             <Footer/>
         </div>
     )
