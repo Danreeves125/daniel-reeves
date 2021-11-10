@@ -2,47 +2,30 @@ import * as React from 'react'
 import {useEffect} from "react";
 import {Link, useStaticQuery, graphql} from 'gatsby'
 import styled from 'styled-components'
-import blobshape from "blobshape"
 import Wave from "react-wavify"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { Swiper, SwiperSlide } from 'swiper/react';
+import PortfolioBlock from "../portfolioBlock";
 
 import 'swiper/css';
-
-const {path} = blobshape({
-    size: 500,
-    growth: 3,
-    edges: 10,
-    seed: null
-});
 
 const ProjectWrapper = styled.section `
     background-color: var(--light-grey);
     position: relative;
-  
-  .blocks {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    padding: 0 1.5rem;
-    grid-gap: 30px;
+    padding: 6rem 0;
     
-    .block {
-        .image {
-            width: 100%;
-            display: block;
-            margin-bottom: 1rem;
-        
-            img {
-                width: 100%;
-                display: block;
-            }
-        }
-        
-        .title {
-        
-        }
+    @media(max-width: 1024px) {
+      padding: 4rem 0;
     }
-  }
+
+    @media(max-width: 640px) {
+      padding: 3rem 0;
+    }
+
+    .swiper {
+        width: 100%;
+        padding: 0 1.5rem;
+        overflow: hidden;
+    }
 `;
 
 const ProjectTitleWrapper = styled.div `
@@ -51,9 +34,21 @@ const ProjectTitleWrapper = styled.div `
     padding: 0 1.5rem;
     width: 100%;
     margin-bottom: 3.8rem;
+
+    @media(max-width: 640px) {
+      flex-direction: column;
+      
+      h2 {
+        margin-bottom: 1.5rem;
+      }
+    }
   
     .button {
       margin-left: auto;
+
+      @media(max-width: 640px) {
+        margin-left: 0;
+      }
     }
 `
 
@@ -100,17 +95,21 @@ const PortfolioSection = ({colour}) => {
                 </ProjectTitleWrapper>
                     <Swiper
                         className="slider slider__recent"
-                        spaceBetween={30}
-                        slidesPerView={3}
+                        spaceBetween={15}
+                        slidesPerView={1}
+                        breakpoints={{
+                            420: {
+                                slidesPerView: 2,
+                            },
+                            768: {
+                                slidesPerView: 3,
+                                spaceBetween: 30
+                            },
+                        }}
                     >
                         {items.map(item => (
-                            <SwiperSlide>
-                                <div className="block">
-                                    <div className="image">
-                                        <GatsbyImage alt="" image={getImage(item.node.featuredImage.node.localFile.childImageSharp.gatsbyImageData)}/>
-                                    </div>
-                                    <div className="title">{item.node.title}</div>
-                                </div>
+                            <SwiperSlide key={item.id}>
+                                <PortfolioBlock data={item}/>
                             </SwiperSlide>
                         ))}
                     </Swiper>

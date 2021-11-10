@@ -2,16 +2,8 @@ import * as React from 'react'
 import {useEffect} from "react";
 import {Link, useStaticQuery, graphql} from 'gatsby'
 import styled from 'styled-components'
-import blobshape from "blobshape"
 import img from './about-bg@2x.jpg';
 import Wave from "react-wavify";
-
-const {path} = blobshape({
-    size: 500,
-    growth: 3,
-    edges: 10,
-    seed: null
-});
 
 const AboutWrapper = styled.section `
   padding: 6rem 0 12rem 0;
@@ -36,6 +28,7 @@ const AboutWrapper = styled.section `
 
   @media (max-width: 640px) {
     padding-top: 3rem;
+    padding-bottom: 6rem;
   }
 `
 const AboutInner = styled.div `

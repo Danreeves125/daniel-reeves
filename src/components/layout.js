@@ -66,6 +66,12 @@ const GlobalStyles = createGlobalStyle`
       border-radius: 2.5rem;
       transition: ease 0.5s;
       background-color: #fff;
+      
+      @media(max-width: 640px) {
+        font-size: 2rem;
+        line-height: 2rem;
+        padding: 1rem 3rem;
+      }
     }
     
     .button--gradient {
@@ -153,10 +159,6 @@ const GlobalStyles = createGlobalStyle`
     .wave-two {
       opacity: 0.2;
       z-index: 2;
-    }
-    
-    .swiper {
-      padding: 0 1.5rem;
     }
 `
 
