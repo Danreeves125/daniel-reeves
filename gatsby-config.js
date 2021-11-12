@@ -8,6 +8,8 @@ module.exports = {
       resolve: "gatsby-source-wordpress",
       options: {
         url: "https://www.danreeves-hidden.danielreeves.net/graphql",
+        useACF: true,
+        acfOptionsPage: ['global_settings'],
       },
     },
     "gatsby-plugin-styled-components",

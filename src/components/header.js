@@ -171,7 +171,7 @@ const Header = () => {
                     <LogoName className="name"/>
                 </Link>
             </Logo>
-            <Navigation>
+            <Navigation rol="Main Navigation">
                 {items.map(item => (
                     <Link key={item.id} to={item.url.replace('http://', '/')} title={item.label}>
                         {item.label}

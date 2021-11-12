@@ -1,8 +1,6 @@
 import * as React from 'react'
-import {useEffect} from "react";
 import {Link, useStaticQuery, graphql} from 'gatsby'
 import styled from 'styled-components'
-import Wave from "react-wavify"
 import { Swiper, SwiperSlide } from 'swiper/react';
 import PortfolioBlock from "../portfolioBlock";
 
