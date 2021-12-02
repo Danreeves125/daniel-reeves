@@ -6,6 +6,7 @@ import Wave from 'react-wavify';
 import Dan from '../images/dan-01.svg';
 import AboutSection from "../components/homepage/aboutSection";
 import PortfolioSection from "../components/homepage/portfolioSection";
+import TestimonialSection from "../components/testimonials";
 
 const Hero = styled.div `
     width: 100%;
@@ -224,6 +225,7 @@ const IndexPage = () => {
             </Hero>
             <AboutSection />
             <PortfolioSection />
+            <TestimonialSection />
         </Layout>
     )
 }
