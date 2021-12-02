@@ -1,6 +1,6 @@
 import * as React from 'react'
 import styled from 'styled-components'
-import {Link, useStaticQuery, graphql} from 'gatsby'
+import { useStaticQuery, graphql} from 'gatsby'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectFade, Pagination } from 'swiper';
 import testimonialBg from './testimonials-bg.jpg';
@@ -15,6 +15,14 @@ const TestimonialWrapper = styled.section `
 	display: flex;
 	flex-direction: column;
 	padding: 6rem 0;
+
+    @media(max-width: 1024px) {
+        padding: 4rem 0;
+    }
+
+    @media(max-width: 640px) {
+        padding: 3rem 0;
+    }
 	
 	svg {
 		margin-left: auto;
@@ -33,12 +41,21 @@ const TestimonialWrapper = styled.section `
 	.slider {
 		width: 100%;
 		max-width: 83rem;
-		margin: 0 auto;
+		margin: 0 auto 6.8rem auto;
 		overflow: hidden;
 		padding: 0;
 		
+		@media(max-width: 1024px) {
+			margin-bottom: 4rem;
+		}
+		
+		@media(max-width: 640px) {
+			margin-bottom: 3rem;
+		}
+		
 		.slide {
 			text-align: center;
+			padding: 0 1.5rem;
 		}
 		
 		.swiper-pagination {
@@ -46,6 +63,31 @@ const TestimonialWrapper = styled.section `
 			display: flex;
 			justify-content: center;
 			bottom: 0;
+		}
+	}
+	
+	.bullets {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		
+		.bullet {
+			width: 0.8rem;
+			height: 0.8rem;
+			background-color: #fff;
+			transition: ease 0.5s;
+			border-radius: 0.6rem;
+			cursor: pointer;
+			
+			&:not(:last-of-type) {
+				margin-right: 1rem;
+			}
+			
+			&--active {
+				width: 3rem;
+				background-color: var(--blue);
+				border-radius: 0.6rem;
+			}
 		}
 	}
 `;
@@ -102,7 +144,16 @@ const TestimonialsBlock = () => {
 				className="slider"
 				slidesPerView={1}
 				effect="fade"
-				pagination={{ clickable: true }}
+				fadeEffect={{crossFade: true}}
+				pagination={{
+					clickable: true,
+					el: '.bullets',
+					bulletClass: 'bullet',
+					bulletActiveClass: 'bullet--active',
+					renderBullet: (index, className) => {
+						return `<span class=${className}></span>`
+					},
+				}}
 			>
 				{getAllTestimonials.map(item => (
 					<SwiperSlide className="slide" key={item.node.id}>
@@ -112,6 +163,7 @@ const TestimonialsBlock = () => {
 					</SwiperSlide>
 				))}
 			</Swiper>
+			<div className="bullets"/>
 		</TestimonialWrapper>
 	)
 }
