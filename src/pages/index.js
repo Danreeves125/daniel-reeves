@@ -7,6 +7,7 @@ import Dan from '../images/dan-01.svg';
 import AboutSection from "../components/homepage/aboutSection";
 import PortfolioSection from "../components/homepage/portfolioSection";
 import TestimonialSection from "../components/testimonials";
+import ContactSection from "../components/homepage/contactSection";
 
 const Hero = styled.div `
     width: 100%;
@@ -167,6 +168,7 @@ const Me = styled.div `
   }
 `
 
+
 const IndexPage = () => {
     
     const Page = useStaticQuery(graphql`
@@ -226,6 +228,7 @@ const IndexPage = () => {
             <AboutSection />
             <PortfolioSection />
             <TestimonialSection />
+            <ContactSection />
         </Layout>
     )
 }

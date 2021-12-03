@@ -73,7 +73,7 @@ const AboutSection = ({colour}) => {
             <AboutInner>
                 <h2 className="h2 uppercase">{data.wpPage.title}</h2>
                 <AboutText dangerouslySetInnerHTML={{ __html: data.wpPage.content }}/>
-                <Link to="/contact" title="Get In Touch" className="button button--purple-alt">Find Out More</Link>
+                <Link to="/contact" title="Find Out More" className="button button--purple-alt">Find Out More</Link>
             </AboutInner>
             <Wave fill='#ededed'
                   paused={false}

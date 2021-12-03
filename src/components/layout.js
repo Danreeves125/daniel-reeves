@@ -88,6 +88,17 @@ const GlobalStyles = createGlobalStyle`
       }
     }
 
+    .button--pink-alt {
+        border: 0.1rem solid var(--pink-alt);
+        color: #fff;
+        background-color: var(--pink-alt);
+    
+        &:hover {
+            color: var(--pink-alt);
+            background-color: #fff;
+        }
+    }
+
     .button--blue {
       border: 0.1rem solid var(--blue);
       color: #fff;
