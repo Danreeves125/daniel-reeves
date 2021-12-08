@@ -7,11 +7,27 @@ const ContactWrapper = styled.section `
 	position: relative;
 	padding: 15.1rem 0;
 
+    @media(max-width: 1024px) {
+        padding: 10rem 0;
+    }
+    
+	@media(max-width: 640px) {
+		padding: 3rem 0;
+	}
+
     .blob {
 	    height: auto;
         position: absolute;
         left: 0;
         bottom: 0;
+        
+        @media(max-width: 1024px) {
+        	width: 20rem;
+        }
+
+        @media(max-width: 640px) {
+            width: 15rem;
+        }
     }
 `;
 
@@ -29,6 +45,7 @@ const Tagline = styled.p `
 	font-size: 2.2rem;
 	line-height: 3rem;
 	font-weight: bold;
+	margin-top: 0;
 	margin-bottom: 1.2rem;
 	color: var(--pink);
 `
@@ -54,6 +71,17 @@ const Text = styled.div `
 
 const ContactSection = ({colour}) => {
 	
+	useEffect(() => {
+		
+		var svg = document.querySelector(".blob");
+		
+		var bbox = svg.getBBox();
+		svg.setAttribute("width", bbox.width + "px");
+		svg.setAttribute("height", bbox.height + "px");
+		svg.setAttribute("viewBox", `${bbox.x} ${bbox.y} ${bbox.width} ${bbox.height}`);
+		svg.style.opacity = 1;
+	});
+	
 	return (
 		<ContactWrapper>
 			<ContactContent>
@@ -67,7 +95,7 @@ const ContactSection = ({colour}) => {
 				<a href="#" title="Get In Touch" className="button button--pink-alt">Get In Touch</a>
 			</ContactContent>
 			
-			<svg className="blob" xmlns="http://www.w3.org/2000/svg" width="318.424" height="505.901">
+			<svg className="blob" opacity="0" xmlns="http://www.w3.org/2000/svg" width="318.424" height="505.901">
 				<path data-name="Intersection 22" d="M0 505.9V0c2.611 19.7 11.179 68.734 35.446 111.773 19.32 34.265 55.655 63.386 86.008 74.551 79.043 29.075 104.539 66.972 104.539 114.7-1.679 53.9-50.1 82.063-32.1 131.784 8.24 22.772 36.262 66.718 104.753 70.6 6.708.974 13.329 1.8 19.783 2.5Z" fill="#ededed"/>
 			</svg>
 		</ContactWrapper>

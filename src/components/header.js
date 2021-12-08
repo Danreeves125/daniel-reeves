@@ -1,9 +1,9 @@
 import * as React from 'react'
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import {Link, useStaticQuery, graphql} from 'gatsby'
 import styled from 'styled-components'
 import blobshape from "blobshape"
-import getRandomColour from './layout';
+import siteColour from './layout';
 import LogoBg from "../images/logo-blob.svg"
 import LogoName from "../images/logo.svg";
 
@@ -38,9 +38,6 @@ const Logo = styled.div `
     height: auto;
     margin-top: -0.2rem;
     transition:  0.5s ease;
-    
-    path {
-    }
   }
   
   .name {
@@ -127,7 +124,6 @@ const Navigation = styled.nav `
     }
 `;
 
-
 const Header = () => {
     useEffect(() => {
         
@@ -138,6 +134,10 @@ const Header = () => {
         svg.setAttribute("viewBox", `${bbox.x} ${bbox.y} ${bbox.width} ${bbox.height}`);
         svg.style.opacity = 1;
     });
+    
+    // const [state, setState] = useState({
+    //     color: siteColour,
+    // });
     
     const data = useStaticQuery(graphql`
         query MainNavigation {
@@ -157,9 +157,6 @@ const Header = () => {
     `);
 
     const items = data.wpMenu.menuItems.nodes;
-    
-    let colour = getRandomColour;
-    
     
     return (
         <SiteHeader>

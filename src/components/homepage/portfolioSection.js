@@ -1,12 +1,25 @@
 import * as React from 'react'
 import {Link, useStaticQuery, graphql} from 'gatsby'
-import styled from 'styled-components'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import PortfolioBlock from "../portfolioBlock";
+import styled from 'styled-components'
 
 import 'swiper/css';
 
+const swiperParam = {
+    slidesPerView: 1,
+    breakpoints: {
+        420: {
+            slidesPerView: 2,
+        },
+        768: {
+            slidesPerView: 3,
+        },
+    }
+}
+
 const ProjectWrapper = styled.section `
+    width: 100%;
     background-color: var(--light-grey);
     position: relative;
     padding: 6rem 0;
@@ -19,10 +32,15 @@ const ProjectWrapper = styled.section `
       padding: 3rem 0;
     }
 
-    .swiper {
-        width: 100%;
+      .swiper {
         padding: 0 1.5rem;
+        margin: 0 auto;
         overflow: hidden;
+
+        .swiper-slide {
+            width: auto;
+
+        }
     }
 `;
 
@@ -91,22 +109,9 @@ const PortfolioSection = ({colour}) => {
                     <h2 className="uppercase no-m">Portfolio</h2>
                     <Link to="/portfolio" title="View All Portfolio" className="button button--blue">View All</Link>
                 </ProjectTitleWrapper>
-                    <Swiper
-                        className="slider slider__recent"
-                        spaceBetween={15}
-                        slidesPerView={1}
-                        breakpoints={{
-                            420: {
-                                slidesPerView: 2,
-                            },
-                            768: {
-                                slidesPerView: 3,
-                                spaceBetween: 30
-                            },
-                        }}
-                    >
-                        {items.map(item => (
-                            <SwiperSlide key={item.id}>
+                    <Swiper className="slider slider__recent" {...swiperParam}>
+                        {items.map((item, i) => (
+                            <SwiperSlide key={i}>
                                 <PortfolioBlock data={item}/>
                             </SwiperSlide>
                         ))}
