@@ -85,7 +85,7 @@ const AboutSection = ({colour}) => {
                       points: 4
                   }}
             />
-            <Wave fill='#444'
+            <Wave fill={colour}
                   paused={false}
                   className="wave-two"
                   options={{

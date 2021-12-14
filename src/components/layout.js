@@ -3,19 +3,9 @@ import Header from "./header"
 import Footer from "./footer"
 import {page__title} from './layout.module.css'
 import styled, {createGlobalStyle} from "styled-components"
+import getRandomColor from '../components/randomColourPicker';
 
-
-let getRandomColor = () => {
-    let colourArray = ['#0067D2', '#665CD0', '#AE48BC', '#DC309B', '#F62971'];
-    
-    let randomColor = Math.floor(Math.random() * colourArray.length);
-    
-    return colourArray[randomColor];
-}
-
-export const siteColour = getRandomColor();
-
-// export let colour = getRandomColor();
+let siteColour = getRandomColor();
 
 const GlobalStyles = createGlobalStyle`
     :root {
@@ -171,21 +161,26 @@ const GlobalStyles = createGlobalStyle`
       pointer-events: none;
     }
     .wave-two {
-      opacity: 0.2;
+      opacity: 0.4;
       z-index: 2;
     }
 `
 
 const Layout = ({pageHeading, infoText, children}) => {
-    
+    const childrenWithProps = React.Children.map(children, child =>
+        React.cloneElement(child, {
+            colour: siteColour,
+        }),
+    );
+
     return (
-        
+
         <div>
             <GlobalStyles />
-            <Header/>
+            <Header colour={siteColour}/>
             <h1 className={page__title}>{pageHeading}</h1>
             <h2>{infoText}</h2>
-            {children}
+            {childrenWithProps}
             <Footer/>
         </div>
     )

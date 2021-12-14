@@ -12,6 +12,7 @@ const PortfolioImage = styled.div `
     border-radius: 1rem;
     margin-bottom: 1rem;
     overflow: hidden;
+    position: relative;
 
     img {
         width: 100%;

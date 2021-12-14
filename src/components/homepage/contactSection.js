@@ -28,6 +28,10 @@ const ContactWrapper = styled.section `
         @media(max-width: 640px) {
             width: 15rem;
         }
+
+		@media(max-width: 500px) {
+			width: 10rem
+		}
     }
 `;
 
@@ -39,6 +43,10 @@ const ContactContent = styled.div `
 	text-align: center;
 	position: relative;
 	z-index: 2;
+
+	@media(max-width: 640px) {
+		max-width: 35rem;
+	}
 `
 const Tagline = styled.p `
 	text-transform: uppercase;
@@ -66,6 +74,11 @@ const Text = styled.div `
 		font-size: 2.2rem;
 		line-height: 3rem;
 		margin-bottom: 0;
+		
+		@media(max-width: 640px) {
+			font-size: 1.8rem;
+			line-height: 2.5rem;
+		}
 	}
 `
 
@@ -96,7 +109,7 @@ const ContactSection = ({colour}) => {
 			</ContactContent>
 			
 			<svg className="blob" opacity="0" xmlns="http://www.w3.org/2000/svg" width="318.424" height="505.901">
-				<path data-name="Intersection 22" d="M0 505.9V0c2.611 19.7 11.179 68.734 35.446 111.773 19.32 34.265 55.655 63.386 86.008 74.551 79.043 29.075 104.539 66.972 104.539 114.7-1.679 53.9-50.1 82.063-32.1 131.784 8.24 22.772 36.262 66.718 104.753 70.6 6.708.974 13.329 1.8 19.783 2.5Z" fill="#ededed"/>
+				<path data-name="Intersection 22" d="M0 505.9V0c2.611 19.7 11.179 68.734 35.446 111.773 19.32 34.265 55.655 63.386 86.008 74.551 79.043 29.075 104.539 66.972 104.539 114.7-1.679 53.9-50.1 82.063-32.1 131.784 8.24 22.772 36.262 66.718 104.753 70.6 6.708.974 13.329 1.8 19.783 2.5Z" fill={colour}/>
 			</svg>
 		</ContactWrapper>
 	)
