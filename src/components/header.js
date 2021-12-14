@@ -13,7 +13,6 @@ const {path} = blobshape({
 	seed: null
 });
 
-
 const SiteHeader = styled.header `
 	width: 100%;
 	display: flex;
@@ -80,10 +79,6 @@ const Logo = styled.div `
 	}
   }
 `;
-
-const theme = {
-	main: "#EDEDED"
-}
 
 const Navigation = styled.nav `
 	margin: 0;

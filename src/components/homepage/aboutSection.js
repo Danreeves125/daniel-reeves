@@ -54,25 +54,52 @@ const AboutText = styled.div `
   }
 `
 
+const Email = styled.a `
+    max-width: 3rem;
+    position: absolute;
+    right: 1.5rem;
+  	top: 3rem;
+    z-index: 2;
+    transform: rotate(90deg);
+    font-size: 2.5rem;
+    line-height: 3rem;
+    font-family: var(--primary-font);
+    text-decoration: none;
+    color: #000;
+  	
+`
+
 const AboutSection = ({colour}) => {
     
     const data = useStaticQuery(graphql`
         query About {
-            wpPage(slug: {eq: "about-me"}) {
+            about: wpPage(slug: {eq: "about-me"}) {
                 id
                 link
                 title
                 slug
                 content
             }
+
+            email: wp {
+                acfOptionsWebsiteGlobalSettings {
+                    websiteGlobalSettings {
+                        email
+                    }
+                }
+            }
         }
     `);
+
+    const emailAddress = data.email.acfOptionsWebsiteGlobalSettings.websiteGlobalSettings.email;
+    const newEmail = emailAddress.replace('hello', `<span style="color: ${colour};">Hello</span>`);
     
     return (
         <AboutWrapper>
+            <Email href="mailTo:emailAddress?subject=Enquiry From Website" dangerouslySetInnerHTML={{__html: newEmail}} />
             <AboutInner>
-                <h2 className="h2 uppercase">{data.wpPage.title}</h2>
-                <AboutText dangerouslySetInnerHTML={{ __html: data.wpPage.content }}/>
+                <h2 className="h2 uppercase">{data.about.title}</h2>
+                <AboutText dangerouslySetInnerHTML={{ __html: data.about.content }}/>
                 <Link to="/contact" title="Find Out More" className="button button--purple-alt">Find Out More</Link>
             </AboutInner>
             <Wave fill='#ededed'

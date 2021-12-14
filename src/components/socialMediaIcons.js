@@ -23,7 +23,7 @@ const Icon = styled.li `
     }
 `;
 
-const SocialIcons = () => {
+const SocialIcons = ({class_name}) => {
     
     const getIcons = useStaticQuery(graphql `
         query GlobalInfo {
@@ -44,7 +44,7 @@ const SocialIcons = () => {
     const socialLink = getIcons.wp.acfOptionsWebsiteGlobalSettings.websiteGlobalSettings.socialIcons;
     
     return (
-        <Icons>
+        <Icons className={class_name !== '' ? class_name : ''}>
             <Icon key="1">
                 <a href={socialLink.linkedin} title="Linked" target="_blank" rel="noreferrer">
                     <svg xmlns="http://www.w3.org/2000/svg" width="26.25" height="26.249" viewBox="0 0 26.25 26.249">
