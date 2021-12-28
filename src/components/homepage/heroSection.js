@@ -5,13 +5,13 @@ import Wave from 'react-wavify';
 import SocialMediaIcons from "../socialMediaIcons";
 import Dan from '../../images/dan-01.svg';
 
-const Hero = styled.div `
+const Hero = styled.section `
     width: 100%;
     position: relative;
   
     .blob-2 {
       position: absolute;
-      top: 3rem;
+      top: 0;
       right: 0;
     }
   `
@@ -201,8 +201,8 @@ const HeroSection = ({colour}) => {
 
     return(
         <Hero>
-            <svg className="blob-2" xmlns="http://www.w3.org/2000/svg" width="53.739" height="361.259" viewBox="0 0 53.739 361.259">
-                <path id="Intersection_22" data-name="Intersection 22" d="M272.5,365.7c-10.029-93.109-29.266-116.269-43.917-138.752-20.459-27.7-2.841-56.49,10.917-79.244s6.778-54.846,10.726-66.976c8.506-26.134,17.119-27.069,22.274-69.466a22.739,22.739,0,0,1,.5-2.8V369.719Q272.733,367.853,272.5,365.7Z" transform="translate(-219.261 -8.46)" fill={colour}/>
+            <svg  xmlns="http://www.w3.org/2000/svg" className="blob-2" width="42.239" height="244.908" viewBox="0 0 42.239 244.908">
+                <path id="Intersection_22" data-name="Intersection 22" d="M76.082,222.447c-20.458-27.7-2.84-56.49,10.918-79.244s6.778-54.846,10.725-66.976C101.572,64.41,105.44,57.746,109,50.071V294.978C98.958,254.405,86.386,238.258,76.082,222.447Z" transform="translate(-66.761 -50.071)" fill={colour}/>
             </svg>
 
 

@@ -66,7 +66,6 @@ const Email = styled.a `
     font-family: var(--primary-font);
     text-decoration: none;
     color: #000;
-  	
 `
 
 const AboutSection = ({colour}) => {
