@@ -16,15 +16,15 @@ import ContactSection from "../components/homepage/contactSection";
 //                     <meta name="msapplication-TileColor" content="#ffffff">
 //                         <meta name="theme-color" content="#ffffff">
 //
-const IndexPage = () => {
+const IndexPage = ({websiteColour}) => {
     
     return(
         <main className='home'>
-            <HeroSection />
-            <AboutSection />
-            <PortfolioSection  />
-            <TestimonialSection  />
-            <ContactSection  />
+            <HeroSection colour={websiteColour}/>
+            <AboutSection colour={websiteColour}/>
+            <PortfolioSection colour={websiteColour}/>
+            <TestimonialSection colour={websiteColour}/>
+            <ContactSection colour={websiteColour}/>
         </main>
     )
 }

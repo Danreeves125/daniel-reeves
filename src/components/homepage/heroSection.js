@@ -45,7 +45,6 @@ const HeroWrapper = styled.div `
     }
   
 `
-
 const HeroContent = styled.div `
     width: 55.2rem;
     position: absolute;
@@ -113,7 +112,6 @@ const HeroContent = styled.div `
       }
     }
 `
-
 const Me = styled.div `
   width: 68rem;
   display: flex;
