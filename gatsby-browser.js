@@ -1,12 +1,11 @@
 "@fontsource/roboto"
 "@fontsource/roboto-condensed"
 
-import React from "react";
-import Layout from "./src/components/layout";
-import getRandomColor from './src/components/randomColourPicker';
-import { createGlobalStyle } from "styled-components"
+import React from "react"
 
-let siteColour = getRandomColor();
+import Layout from "./src/components/layout"
+import getRandomColor from './src/components/randomColourPicker'
+import {createGlobalStyle} from "styled-components";
 
 const GlobalStyles = createGlobalStyle`
     :root {
@@ -167,10 +166,13 @@ const GlobalStyles = createGlobalStyle`
     }
 `
 
-export const wrapPageElement = ({ element, props }) => {
-    
+
+let siteColour = getRandomColor();
+
+export const wrapRootElement = ({ element, props }) => {
+
     return (
-        <Layout color={siteColour}>
+        <Layout {...props} color={siteColour}>
             <GlobalStyles />
             {element}
         </Layout>

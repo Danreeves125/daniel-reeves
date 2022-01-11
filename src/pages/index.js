@@ -19,13 +19,13 @@ import ContactSection from "../components/homepage/contactSection";
 const IndexPage = () => {
     
     return(
-        <div className="home">
+        <main className='home'>
             <HeroSection />
             <AboutSection />
             <PortfolioSection  />
             <TestimonialSection  />
             <ContactSection  />
-        </div>
+        </main>
     )
 }
 

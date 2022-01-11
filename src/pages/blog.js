@@ -3,9 +3,9 @@ import Layout from "../components/layout"
 
 const BlogPage = () => {
     return (
-        <Layout pageHeading="Blog">
+        <main className='blog'>
             <p>Blog Post to go here</p>
-        </Layout>
+        </main>
     )
 }
 

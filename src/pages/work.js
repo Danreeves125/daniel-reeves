@@ -3,9 +3,9 @@ import Layout from "../components/layout";
 
 const Work = () => {
     return (
-        <Layout>
+        <div className="page">
             <p>This is working</p>
-        </Layout>
+        </div>
     )
 }
 
