@@ -162,7 +162,6 @@ const GlobalStyles = createGlobalStyle`
     }
 `
 
-
 const Layout = ({pageHeading, infoText, color, children}) => {
     
     const childrenWithProps = React.Children.map(children, child =>

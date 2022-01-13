@@ -18,19 +18,28 @@ const ContactWrapper = styled.section `
     .blob {
 	    height: auto;
         position: absolute;
-        left: 0;
-        bottom: 0;
-        
-        @media(max-width: 1024px) {
-        	width: 20rem;
-        }
+    
 
-        @media(max-width: 640px) {
-            width: 15rem;
-        }
+		&--top {
+			right: 0;
+			top: 3rem;
+		}
 
-		@media(max-width: 500px) {
-			width: 10rem
+		&--bottom {
+			left: 0;
+			bottom: 0;
+			
+			@media(max-width: 1024px) {
+				width: 20rem;
+			}
+
+			@media(max-width: 640px) {
+				width: 15rem;
+			}
+
+			@media(max-width: 500px) {
+				width: 10rem
+			}
 		}
     }
 `;
@@ -97,6 +106,10 @@ const ContactSection = ({colour}) => {
 	
 	return (
 		<ContactWrapper>
+			<svg className="blob blob--top" xmlns="http://www.w3.org/2000/svg" width="86.075" height="422.581" viewBox="0 0 86.075 422.581">
+				<path data-name="Intersection 22" d="M44.575 279.884c-39-44.23-57.9-97.964-34.025-132.5C32.489 115.646 74.114 101.159 86.075 0v422.582c-3.243-37.299-13.077-110.459-41.5-142.698Z" fill={colour}/>
+			</svg>
+
 			<ContactContent>
 				<Tagline>Whats next?</Tagline>
 				<Title>Say Hello</Title>
@@ -108,7 +121,7 @@ const ContactSection = ({colour}) => {
 				<a href="#" title="Get In Touch" className="button button--pink-alt">Get In Touch</a>
 			</ContactContent>
 			
-			<svg className="blob" opacity="0" xmlns="http://www.w3.org/2000/svg" width="318.424" height="505.901">
+			<svg className="blob blob--bottom" xmlns="http://www.w3.org/2000/svg" width="318.424" height="505.901">
 				<path data-name="Intersection 22" d="M0 505.9V0c2.611 19.7 11.179 68.734 35.446 111.773 19.32 34.265 55.655 63.386 86.008 74.551 79.043 29.075 104.539 66.972 104.539 114.7-1.679 53.9-50.1 82.063-32.1 131.784 8.24 22.772 36.262 66.718 104.753 70.6 6.708.974 13.329 1.8 19.783 2.5Z" fill={colour}/>
 			</svg>
 		</ContactWrapper>
