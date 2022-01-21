@@ -177,7 +177,6 @@ const Me = styled.div `
     z-index: 2;
   }
 `
-
 const HeroSection = ({colour}) => {
 
     const Page = useStaticQuery(graphql`
@@ -232,7 +231,7 @@ const HeroSection = ({colour}) => {
                   paused={false}
                   className="wave-two"
                   options={{
-                      height: 105,
+                      height: 115,
                       amplitude: 28,
                       speed: 0.15,
                       points: 3

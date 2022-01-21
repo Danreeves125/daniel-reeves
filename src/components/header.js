@@ -136,6 +136,88 @@ const Navigation = styled.nav `
 	}
 `;
 
+
+const Hamburger = styled.button `
+	width: 3.7rem;
+	display: none;
+	flex-direction: column;
+	align-items: center;
+	cursor: pointer;
+	z-index: 1000;
+	border-radius: 0;
+	background: none;
+	padding: 0;
+	margin: 0;
+	box-shadow: none;
+	border: 0;
+
+	@media (max-width: 1300px)  {
+		display: flex;
+	}
+
+	.bars {
+		height: 2.4rem;
+		width: 3.7rem;
+		position: relative;
+
+		&:hover {
+			cursor: pointer;
+		}
+	}
+
+	.bar {
+		background: #000;
+		transform: translateY(-50%) rotate(0deg);
+		position: absolute;
+		width: 100%;
+		height: 0.4rem;
+		border-radius: 0.4rem;
+		transition: top 0.1s ease 0.3s, transform 0.3s ease, background 0.1s ease 0.3s;
+		left: 0;
+
+		&:nth-child(1) {
+			top: 10%;
+		}
+
+		&:nth-child(2) {
+			top: 50%;
+		}
+
+		&:nth-child(3) {
+			top: 90%;
+		}
+	}
+
+	& > span:not(.bars) {
+		color: #000;
+		font-weight: 400;
+		margin-top: 0.6rem;
+	}
+
+	&--active {
+
+		.bars {
+			.bar {
+				transition: top 0.1s ease, transform 0.3s ease 0.1s, background 0.1s ease;
+
+				&:nth-child(1) {
+					top: 50%;
+					transform: translateY(-50%) rotate(315deg);
+				}
+
+				&:nth-child(2) {
+					transform: translateY(-50%) rotate(405deg);
+				}
+
+				&:nth-child(3) {
+					top: 50%;
+					transform: translateY(-50%) rotate(405deg);
+				}
+			}
+		}
+	}
+`
+
 const Header = ({colour}) => {
 	
 	const data = useStaticQuery(graphql`
@@ -174,6 +256,14 @@ const Header = ({colour}) => {
 					</Link>
 				))}
 			</Navigation>
+			<Hamburger>
+				<span class="bars">
+					<span class="bar"></span>
+					<span class="bar"></span>
+					<span class="bar"></span>
+				</span>
+				<span class="header__text">Menu</span>
+			</Hamburger>
 		</SiteHeader>
 	)
 }
