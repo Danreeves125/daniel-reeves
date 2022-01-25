@@ -120,9 +120,9 @@ const ContactSection = ({colour}) => {
 				</Text>
 				<a href="#" title="Get In Touch" className="button button--pink-alt">Get In Touch</a>
 			</ContactContent>
-			
-			<svg className="blob blob--bottom" xmlns="http://www.w3.org/2000/svg" width="318.424" height="505.901">
-				<path data-name="Intersection 22" d="M0 505.9V0c2.611 19.7 11.179 68.734 35.446 111.773 19.32 34.265 55.655 63.386 86.008 74.551 79.043 29.075 104.539 66.972 104.539 114.7-1.679 53.9-50.1 82.063-32.1 131.784 8.24 22.772 36.262 66.718 104.753 70.6 6.708.974 13.329 1.8 19.783 2.5Z" fill={colour}/>
+
+			<svg className="blob blob--bottom" xmlns="http://www.w3.org/2000/svg" width="316.331" height="488.092" viewBox="0 0 316.331 488.092">
+				<path data-name="Intersection 22" d="M0 488.092V0c4.523 24.121 13.9 60.775 32.566 93.881 19.32 34.264 55.655 63.385 86.008 74.551 79.043 29.075 104.539 66.971 104.539 114.7-1.679 53.9-50.1 82.063-32.1 131.783 8.24 22.772 36.262 66.719 104.753 70.6a542.807 542.807 0 0 0 20.571 2.58Z" fill={colour}/>
 			</svg>
 		</ContactWrapper>
 	)
