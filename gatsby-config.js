@@ -12,6 +12,16 @@ module.exports = {
         acfOptionsPage: ['global_settings'],
       },
     },
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [
+          'Roboto',
+          'Roboto Condensed'
+        ],
+        display: 'swap'
+      }
+    },
     "gatsby-plugin-styled-components",
     "gatsby-plugin-gatsby-cloud",
     "gatsby-plugin-image",

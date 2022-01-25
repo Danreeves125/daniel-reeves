@@ -18,6 +18,7 @@ const SiteHeader = styled.header `
 	display: flex;
 	align-items: flex-start;
 	justify-content: space-between;
+	position: relative;
 `;
 
 const Logo = styled.div `
@@ -109,8 +110,8 @@ const Navigation = styled.nav `
 	@media(max-width: 1024px) {
 		padding-top: 2rem;
 	}
-	
-	@media(max-width: 750px) {
+
+	@media (max-width: 795px)  {
 		display: none;
 	}
   
@@ -136,22 +137,23 @@ const Navigation = styled.nav `
 	}
 `;
 
-
 const Hamburger = styled.button `
-	width: 3.7rem;
+	width: 6.8rem;
+	height: 6.8rem;
 	display: none;
 	flex-direction: column;
 	align-items: center;
+	justify-content: center;
 	cursor: pointer;
 	z-index: 1000;
-	border-radius: 0;
-	background: none;
 	padding: 0;
-	margin: 0;
+	margin: 1.5rem 1.5rem 0 0;
 	box-shadow: none;
 	border: 0;
+	background-color: var(--pink);
+	border-radius: 50%;
 
-	@media (max-width: 1300px)  {
+	@media (max-width: 795px)  {
 		display: flex;
 	}
 
@@ -166,7 +168,7 @@ const Hamburger = styled.button `
 	}
 
 	.bar {
-		background: #000;
+		background: #fff;
 		transform: translateY(-50%) rotate(0deg);
 		position: absolute;
 		width: 100%;
@@ -189,7 +191,7 @@ const Hamburger = styled.button `
 	}
 
 	& > span:not(.bars) {
-		color: #000;
+		color: #fff;
 		font-weight: 400;
 		margin-top: 0.6rem;
 	}

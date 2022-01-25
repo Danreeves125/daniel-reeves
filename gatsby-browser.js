@@ -1,7 +1,7 @@
-"@fontsource/roboto"
-"@fontsource/roboto-condensed"
-
 import React from "react"
+
+// import "@fontsource/roboto"
+// import "@fontsource/roboto-condensed"
 
 import Layout from "./src/components/layout"
 import getRandomColor from './src/components/randomColourPicker'

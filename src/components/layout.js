@@ -106,7 +106,7 @@ const GlobalStyles = createGlobalStyle`
     h5, .h5,
     h6, .h6 {
         font-family: var(--primary-font);
-        font-weight: bold;
+        font-weight: 700;
         margin-top: 0;
     }
 

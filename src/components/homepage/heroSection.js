@@ -77,7 +77,7 @@ const HeroContent = styled.div `
     h1 {
         font-size: 8.8rem;
         line-height: 9rem;
-        font-weight: 600;
+        font-weight: bold;
       
         @media(max-width: 1230px) {
             font-size: 6rem;
