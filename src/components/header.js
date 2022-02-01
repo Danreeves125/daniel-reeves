@@ -138,8 +138,8 @@ const Navigation = styled.nav `
 `;
 
 const Hamburger = styled.button `
-	width: 6.8rem;
-	height: 6.8rem;
+	width: 6rem;
+	height: 6rem;
 	display: none;
 	flex-direction: column;
 	align-items: center;
@@ -151,7 +151,7 @@ const Hamburger = styled.button `
 	box-shadow: none;
 	border: 0;
 	background-color: var(--pink);
-	border-radius: 50%;
+	border-radius: 0.5rem;
 
 	@media (max-width: 795px)  {
 		display: flex;
@@ -188,12 +188,6 @@ const Hamburger = styled.button `
 		&:nth-child(3) {
 			top: 90%;
 		}
-	}
-
-	& > span:not(.bars) {
-		color: #fff;
-		font-weight: 400;
-		margin-top: 0.6rem;
 	}
 
 	&--active {
@@ -264,7 +258,6 @@ const Header = ({colour}) => {
 					<span class="bar"></span>
 					<span class="bar"></span>
 				</span>
-				<span class="header__text">Menu</span>
 			</Hamburger>
 		</SiteHeader>
 	)

@@ -17,7 +17,7 @@ module.exports = {
       options: {
         fonts: [
           'Roboto',
-          'Roboto Condensed'
+          'Roboto Condensed',
         ],
         display: 'swap'
       }

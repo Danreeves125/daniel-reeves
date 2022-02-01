@@ -23,6 +23,19 @@ const ContactWrapper = styled.section `
 		&--top {
 			right: 0;
 			top: 3rem;
+			height: auto;
+
+			@media(max-width: 1024px) {
+				width: 7rem;
+			}
+			
+			@media(max-width: 640px) {
+				width: 4rem;
+			}
+
+			@media(max-width: 500px) {
+				width: 3rem;
+			}
 		}
 
 		&--bottom {
