@@ -41,6 +41,7 @@ const AboutInner = styled.div `
 `
 
 const AboutText = styled.div `
+  padding-right: 4rem;
   
   p {
     font-family: var(--body-font);
@@ -66,6 +67,11 @@ const Email = styled.a `
     font-family: var(--primary-font);
     text-decoration: none;
     color: #000;
+
+    @media(max-width: 640px) {
+      font-size: 2rem;
+      line-height: 2.5rem;
+    }
 `
 
 const AboutSection = ({colour}) => {

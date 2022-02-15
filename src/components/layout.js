@@ -34,6 +34,7 @@ const GlobalStyles = createGlobalStyle`
     
     body {
         margin: 0;
+        overflow-x: hidden;
     }
     
     .container {
@@ -108,6 +109,10 @@ const GlobalStyles = createGlobalStyle`
         font-family: var(--primary-font);
         font-weight: 700;
         margin-top: 0;
+      
+        &:not(:first-child) {
+            margin-top: 1.5rem;
+        }
     }
 
     .uppercase {
@@ -146,6 +151,10 @@ const GlobalStyles = createGlobalStyle`
     h5, .h5 {
       margin-bottom: 20rem;
       font-size: 2.6rem;
+    }
+    
+    p {
+        margin-top: 0;
     }
 
     .wave,

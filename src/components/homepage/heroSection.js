@@ -8,11 +8,12 @@ import Dan from '../../images/dan-01.svg';
 const Hero = styled.section `
     width: 100%;
     position: relative;
+   
   
     .blob-2 {
       position: absolute;
       top: 0;
-      right: 0;
+      right: -1rem;
     }
   `
 const HeroWrapper = styled.div `
@@ -175,6 +176,11 @@ const Me = styled.div `
     transform: translateY(-50%);
     justify-content: center;
     z-index: 2;
+    
+    @media(max-width: 500px) {
+      top: 57%;
+      right: 4rem;
+    }
   }
 `
 const HeroSection = ({colour}) => {
