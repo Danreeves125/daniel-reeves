@@ -63,10 +63,9 @@ const HeroContent = styled.div `
         position: relative;
         top: 0;
         transform: none;
-        padding-left: 0;
         text-align: center;
         max-width: 64rem;
-      
+        padding: 0 1.5rem;
     }
   
     h1, h2 {
@@ -102,7 +101,6 @@ const HeroContent = styled.div `
       line-height: 2.5rem;
       color: var(--dark-grey);
       margin: 0 0 4.4rem 0;
-      padding: 0 1.5rem;
 
       @media(max-width: 1230px) {
         font-size: 1.6rem;
@@ -213,7 +211,7 @@ const HeroSection = ({colour}) => {
             <HeroWrapper>
                 <HeroContent>
                     <h1>{Page.home.homepage.heroTitle}</h1>
-                    <h2>{Page.home.homepage.heroSubtitle}</h2>
+                    <h2 style={{color: colour}}>{Page.home.homepage.heroSubtitle}</h2>
                     <p>
                         {Page.home.homepage.heroText}
                     </p>

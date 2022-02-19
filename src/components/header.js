@@ -158,12 +158,36 @@ const Hamburger = styled.button `
 	}
 
 	.bars {
-		height: 2.4rem;
+		height: 2.9rem;
 		width: 3.7rem;
 		position: relative;
 
 		&:hover {
 			cursor: pointer;
+		}
+
+		&--open {
+			.bar {
+				width: 3.7rem;
+				transition: width 0.2s ease, transform 0.3s ease 0.1s, background 0.1s ease;
+
+				&:nth-child(1) {
+					width: 3.7rem;
+					top: 50%;
+					transform: translateY(-50%) rotate(315deg);
+				}
+
+				&:nth-child(2) {
+					width: 3.7rem;
+					transform: translateY(-50%) rotate(405deg);
+				}
+
+				&:nth-child(3) {
+					width: 3.7rem;
+					top: 50%;
+					transform: translateY(-50%) rotate(405deg);
+				}
+			}
 		}
 	}
 
@@ -182,40 +206,23 @@ const Hamburger = styled.button `
 		}
 
 		&:nth-child(2) {
+			width: 3.1rem;
 			top: 50%;
 		}
 
 		&:nth-child(3) {
+			width: 2.5rem;
 			top: 90%;
-		}
-	}
-
-	&--active {
-
-		.bars {
-			.bar {
-				transition: top 0.1s ease, transform 0.3s ease 0.1s, background 0.1s ease;
-
-				&:nth-child(1) {
-					top: 50%;
-					transform: translateY(-50%) rotate(315deg);
-				}
-
-				&:nth-child(2) {
-					transform: translateY(-50%) rotate(405deg);
-				}
-
-				&:nth-child(3) {
-					top: 50%;
-					transform: translateY(-50%) rotate(405deg);
-				}
-			}
 		}
 	}
 `
 
+
+
 const Header = ({colour}) => {
-	
+
+	const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
 	const data = useStaticQuery(graphql`
 		query MainNavigation {
 			wpMenu(slug: {eq: "header"}) {
@@ -236,6 +243,7 @@ const Header = ({colour}) => {
 	const items = data.wpMenu.menuItems.nodes;
 	
 	return (
+
 		<SiteHeader>
 			<Logo>
 				<svg className="logo-bg" xmlns="http://www.w3.org/2000/svg" width="660" height="265.809" viewBox="0 0 660 265.809">
@@ -252,11 +260,15 @@ const Header = ({colour}) => {
 					</Link>
 				))}
 			</Navigation>
-			<Hamburger>
-				<span class="bars">
-					<span class="bar"></span>
-					<span class="bar"></span>
-					<span class="bar"></span>
+			<Hamburger
+				navbarOpen={mobileMenuOpen}
+				onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+
+			>
+				<span className={mobileMenuOpen ? "bars bars--open" : "bars"}>
+					<span className="bar"></span>
+					<span className="bar"></span>
+					<span className="bar"></span>
 				</span>
 			</Hamburger>
 		</SiteHeader>
