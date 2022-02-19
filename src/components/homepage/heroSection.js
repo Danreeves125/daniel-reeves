@@ -102,6 +102,7 @@ const HeroContent = styled.div `
       line-height: 2.5rem;
       color: var(--dark-grey);
       margin: 0 0 4.4rem 0;
+      padding: 0 1.5rem;
 
       @media(max-width: 1230px) {
         font-size: 1.6rem;
