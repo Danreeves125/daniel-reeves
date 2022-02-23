@@ -171,11 +171,12 @@ const GlobalStyles = createGlobalStyle`
     }
 `
 
-const Layout = ({pageHeading, infoText, color, children}) => {
-    
+const Layout = ({pageHeading, infoText, color, rgbaColour, children}) => {
+
     const childrenWithProps = React.Children.map(children, child =>
         React.cloneElement(child, {
             websiteColour: color,
+            websiteRgbaColour: rgbaColour,
         }
         ),
     );
@@ -184,7 +185,7 @@ const Layout = ({pageHeading, infoText, color, children}) => {
 
         <div className="site">
           <GlobalStyles />
-          <Header colour={color}/>
+          <Header colour={color} rgbaColour={rgbaColour}/>
           <h1>{pageHeading}</h1>
           <h2>{infoText}</h2>
           {childrenWithProps}

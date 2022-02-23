@@ -19,6 +19,15 @@ const SiteHeader = styled.header `
 	align-items: flex-start;
 	justify-content: space-between;
 	position: relative;
+	
+	.mobile-bg {
+		position: absolute;
+		right: -10rem;
+		top: -12rem;
+		z-index: 3;
+		width: 50rem;
+		height: auto;
+	}
 `;
 
 const Logo = styled.div `
@@ -150,7 +159,7 @@ const Hamburger = styled.button `
 	margin: 1.5rem 1.5rem 0 0;
 	box-shadow: none;
 	border: 0;
-	background-color: var(--pink);
+	background-color: ${props => props.theme.backgroundColor};
 	border-radius: 0.5rem;
 
 	@media (max-width: 795px)  {
@@ -217,9 +226,43 @@ const Hamburger = styled.button `
 	}
 `
 
+const MobileMenu = styled.div `
+	//position: absolute;
+	//top: 0;
+	//right: 0;
+	//display: flex;
+	//flex-direction: column;
+	//text-align: center;
+	//z-index: 4;
+	
+`;
+
+const MobileNavigation = styled.nav `
+	position: absolute;
+	top: 5rem;
+	right: 14rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+	z-index: 4;
+	
+	a {
+		font-family: var(--primary-font);
+		font-size: 2.2rem;
+		line-height: 1.8rem;
+		text-transform: uppercase;
+		font-weight: bold;
+		text-decoration: none;
+		transition: ease, 0.5s;
+		position: relative;
+		color: #fff;
+	}
+`;
 
 
-const Header = ({colour}) => {
+
+const Header = ({colour, rgbaColour}) => {
 
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
@@ -263,7 +306,7 @@ const Header = ({colour}) => {
 			<Hamburger
 				navbarOpen={mobileMenuOpen}
 				onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-
+				style={{backgroundColor: colour}}
 			>
 				<span className={mobileMenuOpen ? "bars bars--open" : "bars"}>
 					<span className="bar"></span>
@@ -271,6 +314,19 @@ const Header = ({colour}) => {
 					<span className="bar"></span>
 				</span>
 			</Hamburger>
+			{/*{mobileMenuOpen && (*/}
+					<svg style={{filter: `drop-shadow( -12px 10px 0 ${rgbaColour})`}} className="mobile-bg" xmlns="http://www.w3.org/2000/svg" width="600" height="681.424" viewBox="0 0 600 681.424">
+						<path data-name="Path 259" d="M512.199 117.167c42.885 60.515 69.092 119.6 81.481 191.075 11.912 71 10.006 154.385-32.4 230.624-42.885 76.239-126.271 145.331-206.8 142.472-81-2.382-158.673-77.192-230.624-153.431-71.475-76.24-137.231-153.909-121.507-216.33s112.453-109.117 184.4-169.632C258.227 81.43 304.924 6.62 357.815.426s111.978 56.226 154.384 116.741Z" fill={colour}/>
+					</svg>
+
+					<MobileNavigation role="Mobile Navigation">
+						{items.map(item => (
+							<Link key={item.id} to={item.url.replace('http://', '/')} title={item.label}>
+								{item.label}
+							</Link>
+						))}
+					</MobileNavigation>
+			{/*)}*/}
 		</SiteHeader>
 	)
 }
