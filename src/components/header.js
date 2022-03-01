@@ -255,20 +255,24 @@ const MobileNavigation = styled.nav `
 	text-align: center;
 	z-index: 4;
 	left: 50%;
-	top: 50%;
+	top: 55%;
 	transform: translate(-50%, -50%);
-	gap: 
+	gap: 2rem;
+	overflow: hidden;
 	
 	a {
 		font-family: var(--primary-font);
-		font-size: 2.2rem;
-		line-height: 1.8rem;
+		font-size: 2.5rem;
+		line-height: 2rem;
 		text-transform: uppercase;
 		font-weight: bold;
 		text-decoration: none;
 		transition: ease, 0.5s;
 		position: relative;
 		color: #fff;
+		opacity: 0;
+		right: -100%;
+		
 	}
 `;
 
@@ -332,6 +336,7 @@ const Header = ({colour, rgbaColour}) => {
 				</svg>
 
 				<MobileNavigation role="Mobile Navigation">
+					<Link to="/">Home</Link>
 					{items.map(item => (
 						<Link key={item.id} to={item.url.replace('http://', '/')} title={item.label}>
 							{item.label}
