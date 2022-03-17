@@ -1,14 +1,21 @@
 import * as React from 'react'
 import {Link, useStaticQuery, graphql} from 'gatsby'
 import styled from 'styled-components'
+import { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import PortfolioBlock from "../portfolioBlock";
+import Chevron from "../../images/icons/chevron.svg";
 
 import 'swiper/css';
+import 'swiper/css/navigation';
 
 const swiperParam = {
     slidesPerView: 1,
     spaceBetween: 30,
+    navigation: {
+        nextEl: '.next',
+        prevEl: '.prev',
+    },
     breakpoints: {
         420: {
             slidesPerView: 2,
@@ -16,7 +23,7 @@ const swiperParam = {
         768: {
             slidesPerView: 3,
         },
-    }
+    },
 }
 
 const ProjectWrapper = styled.section `
@@ -68,6 +75,48 @@ const ProjectTitleWrapper = styled.div `
     }
 `
 
+const SwiperArrows = styled.div `
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rem;
+  
+    button {
+        width: 4.5rem;
+        height: 4.5rem;
+        border: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+            
+        svg {
+            width: auto;
+            height: 2.8rem;
+            
+            path {
+              fill: #fff;
+            }
+        }
+    
+        &.prev {
+            margin-right: 0.5rem;
+          
+            svg {
+                transform: scaleX(-1);
+            }
+        }
+
+        &.next {
+        
+        }
+      
+      &.swiper-button-disabled {
+          opacity: 0.6;
+      }
+    }
+`
+
 const PortfolioSection = ({colour}) => {
     
     const portfolio = useStaticQuery(graphql`
@@ -109,13 +158,21 @@ const PortfolioSection = ({colour}) => {
                     <h2 className="uppercase no-m">Portfolio</h2>
                     <Link to="/portfolio" title="View All Portfolio" className="button button--blue">View All</Link>
                 </ProjectTitleWrapper>
-                <Swiper className="slider slider__recent" {...swiperParam}>
+                <Swiper modules={[Navigation]} className="swiper slider slider__recent" {...swiperParam}>
                     {items.map((item, i) => (
                         <SwiperSlide key={i}>
                             <PortfolioBlock data={item}/>
                         </SwiperSlide>
                     ))}
                 </Swiper>
+                <SwiperArrows>
+                    <button className="prev" style={{backgroundColor: colour}}>
+                        <Chevron/>
+                    </button>
+                    <button className="next" style={{backgroundColor: colour}}>
+                        <Chevron/>
+                    </button>
+                </SwiperArrows>
             </div>
         </ProjectWrapper>
     )

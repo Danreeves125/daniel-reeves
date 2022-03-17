@@ -224,18 +224,26 @@ const MobileMenu = styled.div `
 	position: absolute;
 	right: -10rem;
 	top: -12rem;
-	width: 50rem;
-	height: auto;
 	display: flex;
 	flex-direction: column;
 	text-align: center;
 	justify-content: flex-start;
 	z-index: 3;
 	transition: ease 0.5s;
-	transform: translate3d(100%, -100%, 0);
+	//transform: translate3d(100%, -100%, 0);
+	width: 0;
+	height: 0;
+	visibility: hidden;
+	opacity: 0;
 
 	&.open {
-		transform: translate3d(0,0,0);
+		//transform: translate3d(0,0,0);
+		width: 50rem;
+		height: 50rem;
+		visibility: visible;
+		opacity: 1;
+		border-radius: 0.5rem;
+		background-color: var(--secondary-colour);
 	}
 	
 	svg {
@@ -243,11 +251,13 @@ const MobileMenu = styled.div `
 		height: auto;
 		position: relative;
 		z-index: 1;
+		transition: ease 0.5s;
 	}
 	
 `;
 
 const MobileNavigation = styled.nav `
+	width: 100%;
 	position: absolute;
 	display: flex;
 	flex-direction: column;
@@ -267,12 +277,47 @@ const MobileNavigation = styled.nav `
 		text-transform: uppercase;
 		font-weight: bold;
 		text-decoration: none;
-		transition: ease, 0.5s;
 		position: relative;
 		color: #fff;
 		opacity: 0;
-		right: -100%;
+		transform: translate3d(300px, 0, 0);
+	}
+	
+	&.menu-open {
+		@keyframes rightFadeIn {
+			0% {
+				opacity: 0;
+			}
+
+			100% {
+				opacity: 1;
+				transform: translate3d(0, 0, 0);
+			}
+		}
 		
+		a {
+			animation: rightFadeIn .75s ease forwards;
+			
+			&:first-of-type {
+				animation-delay: 0.1s;
+			}
+
+			&:nth-of-type(2) {
+				animation-delay: 0.2s;
+			}
+
+			&:nth-of-type(3) {
+				animation-delay: 0.4s;
+			}
+
+			&:nth-of-type(4) {
+				animation-delay: 0.5s;
+			}
+
+			&:nth-of-type(5) {
+				animation-delay: 0.6s;
+			}
+		}
 	}
 `;
 
@@ -335,7 +380,7 @@ const Header = ({colour, rgbaColour}) => {
 					<path data-name="Path 259" d="M512.199 117.167c42.885 60.515 69.092 119.6 81.481 191.075 11.912 71 10.006 154.385-32.4 230.624-42.885 76.239-126.271 145.331-206.8 142.472-81-2.382-158.673-77.192-230.624-153.431-71.475-76.24-137.231-153.909-121.507-216.33s112.453-109.117 184.4-169.632C258.227 81.43 304.924 6.62 357.815.426s111.978 56.226 154.384 116.741Z" fill={colour}/>
 				</svg>
 
-				<MobileNavigation role="Mobile Navigation">
+				<MobileNavigation role="Mobile Navigation" className={mobileMenuOpen ? "menu-open" : ""}>
 					<Link to="/">Home</Link>
 					{items.map(item => (
 						<Link key={item.id} to={item.url.replace('http://', '/')} title={item.label}>

@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { useStaticQuery, graphql} from 'gatsby'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectFade, Pagination } from 'swiper';
-import testimonialBg from './testimonials-bg.jpg';
+import TestimonialBlock from "./testimonialBlock";
 
 import 'swiper/css';
 import 'swiper/css/effect-fade';
@@ -11,51 +11,40 @@ import 'swiper/css/pagination';
 
 const TestimonialWrapper = styled.section `
 	width: 100%;
-	background: linear-gradient(rgba(0,0,0, 0.6), rgba(0,0,0, 0.6)), url('${testimonialBg}') 50% 50% / cover;
-	display: flex;
-	flex-direction: column;
-	padding: 6rem 0;
-
-    @media(max-width: 1024px) {
-        padding: 4rem 0;
-    }
-
-    @media(max-width: 640px) {
-        padding: 3rem 0;
-    }
+	position: relative;
+	padding: 4vw 0;
 	
-	svg {
-		margin-left: auto;
-		margin-right: auto;
-		margin-bottom: 7rem;
-		
-		@media(max-width: 1024px) {
-            margin-bottom: 4rem;
-		}
-
-        @media(max-width: 640px) {
-            margin-bottom: 3rem;
-        }
+	&:after {
+		content: '';
+		width: 100%;
+		height: 20rem;
+		background: linear-gradient(0deg, rgba(237,237,237,1) 0%, rgba(237,237,237,0) 100%);
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		z-index: 1;
 	}
+
+    //@media(max-width: 1024px) {
+    //    padding: 4rem 0;
+    //}
+    //
+    //@media(max-width: 640px) {
+    //    padding: 3rem 0;
+    //}
 	
 	.slider {
-		width: 100%;
-		max-width: 83rem;
-		margin: 0 auto 6.8rem auto;
+		flex: 1 0 0;
 		overflow: hidden;
-		padding: 0;
-		
-		@media(max-width: 1024px) {
-			margin-bottom: 4rem;
-		}
-		
-		@media(max-width: 640px) {
-			margin-bottom: 3rem;
-		}
+		padding: 1.1rem 5rem;
+		margin-bottom: 3vw;
+		z-index: 3;
 		
 		.slide {
 			text-align: center;
-			padding: 0 1.5rem;
+			padding: 2.1rem;
+			box-shadow: 0 3px 11px rgba(0,0,0, 0.16);
+			border-radius: 0.5rem;
 		}
 		
 		.swiper-pagination {
@@ -70,6 +59,8 @@ const TestimonialWrapper = styled.section `
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		position: relative;
+		z-index: 2;
 		
 		.bullet {
 			width: 0.8rem;
@@ -92,25 +83,48 @@ const TestimonialWrapper = styled.section `
 	}
 `;
 
-const Text = styled.div `
-	margin-bottom: 2.2rem;
+const TestimonialInner = styled.div `
+	width: 100%;
+	max-width: 131rem;
+	margin: 0 auto;
+	padding: 0 1.5rem;
+	display: flex;
+	align-items: center;
+	position: relative;
+	z-index: 2;
 	
-	p {
-		font-size: 1.8rem;
-		line-height: 2.3rem;
-		color: #fff;
-		margin: 0;
+	.arrow {
+		width: auto;
+		height: auto;
+		background-color: #fff;
+		border: 0;
+		padding: 0;
+		cursor: pointer;
+		
+		&--prev {
+			svg {
+				transform: scaleX(-1);
+			}
+		}
+		&--next {
+			
+		}
 	}
-`
+`;
 
-const Name = styled.div `
-	text-transform: uppercase;
-	color: #fff;
-	font-weight: bold;
-	font-family: var(--primary-font);
-	font-size: 3rem;
-	line-height: 3.5rem;
-`
+const TextTop = styled.div `
+	max-width: 85rem;
+	width: 100%;
+	text-align: center;
+	margin: 0 auto 3rem auto;
+	padding: 0 1.5rem;
+	
+	p, ul {
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+`;
 
 const TestimonialsBlock = () => {
 	
@@ -138,31 +152,45 @@ const TestimonialsBlock = () => {
 	
 	return (
 		<TestimonialWrapper>
-			<svg xmlns="http://www.w3.org/2000/svg" width="86.469" height="69.499"><path fill="none" d="M0 0h86.469v69.499H0z" data-name="Group 16"/><path d="M.865 35.928v33.017h33.9V35.928H17.813s0-16.51 16.948-16.51V2.908S.865 2.908.865 35.928Zm84.74-16.51V2.908s-33.9 0-33.9 33.02v33.017h33.9V35.928H68.657s0-16.51 16.948-16.51Z" fill="#fc4444" data-name="Group 17"/></svg>
-			<Swiper
-				modules={[EffectFade, Pagination]}
-				className="slider"
-				slidesPerView={1}
-				effect="fade"
-				fadeEffect={{crossFade: true}}
-				pagination={{
-					clickable: true,
-					el: '.bullets',
-					bulletClass: 'bullet',
-					bulletActiveClass: 'bullet--active',
-					renderBullet: (index, className) => {
-						return `<span class=${className}></span>`
-					},
-				}}
-			>
-				{getAllTestimonials.map(item => (
-					<SwiperSlide className="slide" key={item.node.id}>
-						<Text dangerouslySetInnerHTML={{ __html: item.node.content}}></Text>
-						
-						{item.node.testimonial.name !== null ? <Name>{item.node.testimonial.name}</Name> : ''}
-					</SwiperSlide>
-				))}
-			</Swiper>
+			<h2 className="center">Happy Customers</h2>
+			<TextTop>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid animi at beatae, culpa cupiditate earum est exercitationem fugit natus odit officia, pariatur possimus sit suscipit temporibus veniam vitae voluptate voluptates!
+				</p>
+			</TextTop>
+			<TestimonialInner>
+				<button className="arrow arrow--prev">
+					<svg xmlns="http://www.w3.org/2000/svg" width="25" height="43.75" viewBox="0 0 25 43.75">
+						<path id="Path_276" data-name="Path 276" d="M111.25,47.125a3.125,3.125,0,0,1-2.209-5.334L125.586,25.25,109.041,8.71a3.125,3.125,0,0,1,4.419-4.419l18.75,18.75a3.124,3.124,0,0,1,0,4.419L113.46,46.21A3.1,3.1,0,0,1,111.25,47.125Z" transform="translate(-108.125 -3.375)" fill="#665cd0"/>
+					</svg>
+				</button>
+				<Swiper
+					modules={[EffectFade, Pagination]}
+					className="slider"
+					slidesPerView={3}
+					spaceBetween={15}
+					pagination={{
+						clickable: true,
+						el: '.bullets',
+						bulletClass: 'bullet',
+						bulletActiveClass: 'bullet--active',
+						renderBullet: (index, className) => {
+							return `<span class=${className}></span>`
+						},
+					}}
+				>
+					{getAllTestimonials.map(item => (
+						<SwiperSlide className="slide" key={item.node.id}>
+							<TestimonialBlock data={item}/>
+						</SwiperSlide>
+					))}
+				</Swiper>
+				<button className="arrow arrow--next">
+					<svg xmlns="http://www.w3.org/2000/svg" width="25" height="43.75" viewBox="0 0 25 43.75">
+						<path id="Path_276" data-name="Path 276" d="M111.25,47.125a3.125,3.125,0,0,1-2.209-5.334L125.586,25.25,109.041,8.71a3.125,3.125,0,0,1,4.419-4.419l18.75,18.75a3.124,3.124,0,0,1,0,4.419L113.46,46.21A3.1,3.1,0,0,1,111.25,47.125Z" transform="translate(-108.125 -3.375)" fill="#665cd0"/>
+					</svg>
+				</button>
+			</TestimonialInner>
 			<div className="bullets"/>
 		</TestimonialWrapper>
 	)

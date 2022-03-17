@@ -113,6 +113,10 @@ const GlobalStyles = createGlobalStyle`
         &:not(:first-child) {
             margin-top: 1.5rem;
         }
+      
+      &.center {
+        text-align: center;
+      }
     }
 
     .uppercase {
@@ -155,6 +159,12 @@ const GlobalStyles = createGlobalStyle`
     
     p {
         margin-top: 0;
+        font-size: 1.6rem;
+        line-height: 2.1rem;
+    }
+    
+    .site {
+        overflow-x: hidden;
     }
 
     .wave,
