@@ -2,17 +2,18 @@ import * as React from 'react'
 import styled from 'styled-components'
 import { useStaticQuery, graphql} from 'gatsby'
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { EffectFade, Pagination } from 'swiper';
+import { EffectFade, Pagination, Navigation} from 'swiper';
 import TestimonialBlock from "./testimonialBlock";
 
 import 'swiper/css';
 import 'swiper/css/effect-fade';
 import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 
 const TestimonialWrapper = styled.section `
 	width: 100%;
 	position: relative;
-	padding: 4vw 0;
+	padding: 7vw 0;
 	
 	&:after {
 		content: '';
@@ -24,27 +25,21 @@ const TestimonialWrapper = styled.section `
 		left: 0;
 		z-index: 1;
 	}
-
-    //@media(max-width: 1024px) {
-    //    padding: 4rem 0;
-    //}
-    //
-    //@media(max-width: 640px) {
-    //    padding: 3rem 0;
-    //}
 	
 	.slider {
-		flex: 1 0 0;
+		width: calc(100% - 10rem);
 		overflow: hidden;
-		padding: 1.1rem 5rem;
-		margin-bottom: 3vw;
+		padding: 1.1rem 0;
+		margin: 0 auto 3vw auto;
 		z-index: 3;
+
+		@media(max-width: 395px) {
+			width: 100%;
+			margin-bottom: 3rem;
+		}
 		
 		.slide {
-			text-align: center;
-			padding: 2.1rem;
-			box-shadow: 0 3px 11px rgba(0,0,0, 0.16);
-			border-radius: 0.5rem;
+			padding: 0 1.5rem;
 		}
 		
 		.swiper-pagination {
@@ -94,12 +89,31 @@ const TestimonialInner = styled.div `
 	z-index: 2;
 	
 	.arrow {
-		width: auto;
-		height: auto;
-		background-color: #fff;
+		width: 4.5rem;
+		height: 4.5rem;
 		border: 0;
-		padding: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 		cursor: pointer;
+		background-color: var(--purple);
+		
+		&.swiper-button-disabled {
+			opacity: 0.4;
+		}
+
+		@media(max-width: 395px) {
+			display: none;
+		}
+
+		svg {
+			width: auto;
+			height: 2.8rem;
+
+			path {
+				fill: #fff;
+			}
+		}
 		
 		&--prev {
 			svg {
@@ -126,32 +140,45 @@ const TextTop = styled.div `
 	}
 `;
 
-const TestimonialsBlock = () => {
+const TestimonialsBlock = (colour) => {
 	
 	const getTestimonials = useStaticQuery(graphql `
-        query LatestTestimonials {
-            allWpTestimonial(limit: 5) {
-                edges {
-                    node {
-                        id
-                        content
-                        title
-                        testimonial {
-                            name
-                            companyLogo {
-                                id
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    `);
+		query LatestTestimonials {
+			allWpTestimonial(limit: 5) {
+				edges {
+					node {
+						id
+						content
+						title
+						testimonial {
+							name
+						}
+						featuredImage {
+							node {
+								localFile {
+									childImageSharp {
+										gatsbyImageData(
+											width: 100
+											placeholder: BLURRED
+											formats: [AUTO, WEBP, AVIF]
+
+										)
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+	`);
 	
 	const getAllTestimonials = getTestimonials.allWpTestimonial.edges;
 	
 	return (
 		<TestimonialWrapper>
+
 			<h2 className="center">Happy Customers</h2>
 			<TextTop>
 				<p>
@@ -161,14 +188,12 @@ const TestimonialsBlock = () => {
 			<TestimonialInner>
 				<button className="arrow arrow--prev">
 					<svg xmlns="http://www.w3.org/2000/svg" width="25" height="43.75" viewBox="0 0 25 43.75">
-						<path id="Path_276" data-name="Path 276" d="M111.25,47.125a3.125,3.125,0,0,1-2.209-5.334L125.586,25.25,109.041,8.71a3.125,3.125,0,0,1,4.419-4.419l18.75,18.75a3.124,3.124,0,0,1,0,4.419L113.46,46.21A3.1,3.1,0,0,1,111.25,47.125Z" transform="translate(-108.125 -3.375)" fill="#665cd0"/>
+						<path id="Path_276" data-name="Path 276" d="M111.25,47.125a3.125,3.125,0,0,1-2.209-5.334L125.586,25.25,109.041,8.71a3.125,3.125,0,0,1,4.419-4.419l18.75,18.75a3.124,3.124,0,0,1,0,4.419L113.46,46.21A3.1,3.1,0,0,1,111.25,47.125Z" transform="translate(-108.125 -3.375)" fill="#fff"/>
 					</svg>
 				</button>
 				<Swiper
-					modules={[EffectFade, Pagination]}
+					modules={[EffectFade, Pagination, Navigation]}
 					className="slider"
-					slidesPerView={3}
-					spaceBetween={15}
 					pagination={{
 						clickable: true,
 						el: '.bullets',
@@ -176,6 +201,21 @@ const TestimonialsBlock = () => {
 						bulletActiveClass: 'bullet--active',
 						renderBullet: (index, className) => {
 							return `<span class=${className}></span>`
+						},
+					}}
+					navigation={{
+						nextEl: '.arrow--next',
+						prevEl: '.arrow--prev',
+					}}
+					breakpoints={{
+						320: {
+							slidesPerView: 1,
+						},
+						710: {
+							slidesPerView: 2,
+						},
+						990: {
+							slidesPerView: 3,
 						},
 					}}
 				>
@@ -187,7 +227,7 @@ const TestimonialsBlock = () => {
 				</Swiper>
 				<button className="arrow arrow--next">
 					<svg xmlns="http://www.w3.org/2000/svg" width="25" height="43.75" viewBox="0 0 25 43.75">
-						<path id="Path_276" data-name="Path 276" d="M111.25,47.125a3.125,3.125,0,0,1-2.209-5.334L125.586,25.25,109.041,8.71a3.125,3.125,0,0,1,4.419-4.419l18.75,18.75a3.124,3.124,0,0,1,0,4.419L113.46,46.21A3.1,3.1,0,0,1,111.25,47.125Z" transform="translate(-108.125 -3.375)" fill="#665cd0"/>
+						<path id="Path_276" data-name="Path 276" d="M111.25,47.125a3.125,3.125,0,0,1-2.209-5.334L125.586,25.25,109.041,8.71a3.125,3.125,0,0,1,4.419-4.419l18.75,18.75a3.124,3.124,0,0,1,0,4.419L113.46,46.21A3.1,3.1,0,0,1,111.25,47.125Z" transform="translate(-108.125 -3.375)" fill="#fff"/>
 					</svg>
 				</button>
 			</TestimonialInner>
