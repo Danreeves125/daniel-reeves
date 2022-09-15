@@ -13,12 +13,12 @@ import 'swiper/css/navigation';
 const TestimonialWrapper = styled.section `
 	width: 100%;
 	position: relative;
-	padding: 7vw 0;
+	padding: 5vw 0;
 	
 	&:after {
 		content: '';
 		width: 100%;
-		height: 20rem;
+		height: 30rem;
 		background: linear-gradient(0deg, rgba(237,237,237,1) 0%, rgba(237,237,237,0) 100%);
 		position: absolute;
 		bottom: 0;
